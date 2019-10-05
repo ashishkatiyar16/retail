@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BillingController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">retail</a> &gt; <a href="index.source.html" class="el_package">com.xebia.retail.controller</a> &gt; <span class="el_source">BillingController.java</span></div><h1>BillingController.java</h1><pre class="source lang-java linenums">package com.xebia.retail.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.xebia.retail.constant.UserTypeConstants;
+import com.xebia.retail.service.AffiliateUserService;
+import com.xebia.retail.service.CustomerService;
+import com.xebia.retail.service.EmployeeService;
+import com.xebia.retail.util.AppUtils;
+
+import lombok.extern.slf4j.Slf4j;
+/**
+ * 
+ * @author ashish
+ * 
+ */
+@Controller
+<span class="fc" id="L19">@Slf4j</span>
+<span class="fc" id="L20">public class BillingController {</span>
+
+	@Autowired
+	private EmployeeService employeeService;
+
+	@Autowired
+	private AffiliateUserService affiliateUserService;
+
+	@Autowired
+	private CustomerService customerService;
+
+	/*
+	 * 
+	 * calaclute discount for all user's
+	 */
+	public float getPayableAmount(Integer userId, float netAmount, String billType, String userType) {
+<span class="fc" id="L36">		float fAmount = 0.0f;</span>
+<span class="fc" id="L37">		float fPaidAmount = 0.0f;</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">		if (!com.xebia.retail.constant.Constants.GROCERIES.getValue().equals(billType)) {</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">			if (com.xebia.retail.constant.UserTypeConstants.EMPLOYEE.getValue().equals(userType)</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">					&amp;&amp; employeeService.isEmployee(userId)) {</span>
+<span class="fc" id="L41">				log.info(&quot;User is Employee :: {} &quot;, userId);</span>
+<span class="fc" id="L42">				fAmount = AppUtils.getPercentage(netAmount, 30);</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">			} else if (UserTypeConstants.AFFILIATUSER.getValue().equals(userType)</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">					&amp;&amp; affiliateUserService.isUserExists(userId)) {</span>
+<span class="fc" id="L45">				log.info(&quot;User is affiliateuser :: {} &quot;, userId);</span>
+<span class="fc" id="L46">				fAmount = AppUtils.getPercentage(netAmount, 10);</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">			} else if (UserTypeConstants.CUSTOMER.getValue().equals(userType)</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">					&amp;&amp; customerService.isOldCustomer(userId)) {</span>
+<span class="nc" id="L49">				log.info(&quot;User is customer :: {} &quot;, userId);</span>
+<span class="nc" id="L50">				fAmount = AppUtils.getPercentage(netAmount, 5);</span>
+			}
+		}
+
+<span class="fc" id="L54">		fPaidAmount = netAmount - fAmount;</span>
+<span class="fc" id="L55">		fPaidAmount = fPaidAmount - AppUtils.getCalculatedDiscount(fPaidAmount);</span>
+<span class="fc" id="L56">		log.info(&quot;Final net amount to be paid :: {} &quot;, fPaidAmount);</span>
+<span class="fc" id="L57">		return fPaidAmount;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+retail,com.xebia.retail.model,AffiliatedUser,166,3,30,0,3,1,25,1,10,1
+retail,com.xebia.retail.model,Customer,163,6,30,0,2,2,24,2,9,2
+retail,com.xebia.retail.model,Employee,166,3,30,0,3,1,25,1,10,1
+retail,com.xebia.retail.controller,BillingController,9,84,5,9,2,19,5,5,0,3
+retail,com.xebia.retail.service,AffiliateUserServiceImpl,0,11,0,0,0,3,0,2,0,2
+retail,com.xebia.retail.service,CustomerServiceImpl,2,34,2,2,1,8,2,2,0,2
+retail,com.xebia.retail.service,EmployeeServiceImpl,0,11,0,0,0,3,0,2,0,2
+retail,com.xebia.retail.util,AppUtils,3,24,1,1,1,5,2,2,1,2
+retail,com.xebia.retail.constant,Constants,9,37,0,0,0,6,2,3,2,3
+retail,com.xebia.retail.constant,UserTypeConstants,9,48,0,0,0,6,2,3,2,3
+retail,com.xebia.retail,RetailApplication,22,7,0,0,5,2,1,2,1,2

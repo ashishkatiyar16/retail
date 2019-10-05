@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RetailApplication.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">retail</a> &gt; <a href="index.source.html" class="el_package">com.xebia.retail</a> &gt; <span class="el_source">RetailApplication.java</span></div><h1>RetailApplication.java</h1><pre class="source lang-java linenums">package com.xebia.retail;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import com.xebia.retail.constant.UserTypeConstants;
+import com.xebia.retail.controller.BillingController;
+
+import lombok.extern.slf4j.Slf4j;
+/**
+ * 
+ * @author ashish
+ * Sprign boot application main classs. it is entry point of application.
+ */
+@SpringBootApplication
+<span class="fc" id="L17">@Slf4j</span>
+<span class="fc" id="L18">public class RetailApplication {</span>
+
+	public static void main(String[] args) {
+<span class="nc" id="L21">		ApplicationContext ctx = SpringApplication.run(RetailApplication.class, args);</span>
+<span class="nc" id="L22">		BillingController bean = ctx.getBean(BillingController.class);</span>
+<span class="nc" id="L23">		log.info(&quot;net Payable amount :: {}&quot;,</span>
+<span class="nc" id="L24">				bean.getPayableAmount(1, 5000, &quot;Fashion&quot;, UserTypeConstants.EMPLOYEE.getValue()));</span>
+
+<span class="nc" id="L26">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
