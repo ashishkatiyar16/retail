@@ -10,6 +10,13 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+/**
+ * 
+ * @author ashish 
+ * 
+ * Data model of customers
+ *
+ */
 @Table(name = "customer")
 @Entity
 @Data

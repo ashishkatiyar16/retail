@@ -8,7 +8,11 @@ import com.xebia.retail.constant.UserTypeConstants;
 import com.xebia.retail.controller.BillingController;
 
 import lombok.extern.slf4j.Slf4j;
-
+/**
+ * 
+ * @author ashish
+ * Sprign boot application main classs. it is entry point of application.
+ */
 @SpringBootApplication
 @Slf4j
 public class RetailApplication {

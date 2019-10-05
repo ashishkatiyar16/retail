@@ -13,22 +13,29 @@ import com.xebia.retail.constant.Constants;
 import com.xebia.retail.constant.UserTypeConstants;
 import com.xebia.retail.controller.BillingController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class CustomerTests {
 	@Autowired
 	private BillingController billingController;
 
 	@Test
-	public void whenEmployee_thenAccept() {
-		assertTrue("Passed", 700 == billingController.getPayableAmount(1, 1000, Constants.FASHION.getValue(),
+	public void when_thenAccept() {
+		assertTrue(950 == billingController.getPayableAmount(1, 1000, Constants.FASHION.getValue(),
 				UserTypeConstants.CUSTOMER.getValue()));
 	}
 
 	@Test
-	public void whenEmployee_thenReject() {
-		assertFalse("Failed", 900 == billingController.getPayableAmount(1, 1000, Constants.FASHION.getValue(),
+	public void when_thenReject() {
+		assertFalse(900 == billingController.getPayableAmount(1, 1000, Constants.FASHION.getValue(),
 				UserTypeConstants.CUSTOMER.getValue()));
 	}
+	
+	
+	
+	
 
 }

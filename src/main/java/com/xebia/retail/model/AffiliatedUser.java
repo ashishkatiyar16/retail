@@ -9,7 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
-
+/**
+ * 
+ * @author ashish
+ * Data model fro affiliated users
+ */
 @Table(name = "affiliated_user")
 @Entity
 @Data
