@@ -9,3 +9,5 @@ java -jar retail-0.0.1-SNAPSHOT.jar
 # data base script 
 need to excute
 retail.sql
+covrage report generated commnd
+mvn clean test jacoco:report
